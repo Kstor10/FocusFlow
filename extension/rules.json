@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "dummy-rule-do-not-use",
+      "resourceTypes": ["main_frame"]
+    }
+  }
+] 

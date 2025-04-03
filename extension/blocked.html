@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Blocked - FocusFlow</title>
+    <link rel="stylesheet" href="blocked.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Use external script instead of inline script to comply with CSP -->
+    <script src="early_redirect.js"></script>
+</head>
+<body>
+    <div class="glitch-container">
+        <div class="glitch-line"></div>
+        <div class="glitch-line"></div>
+        <div class="glitch-line"></div>
+    </div>
+    
+    <div class="container">
+        <div class="blocked-message">
+            <div class="cyber-header">
+                <div class="cyber-line"></div>
+                <div class="section-title">ACCESS DENIED</div>
+                <div class="cyber-line"></div>
+            </div>
+            
+            <div class="icon">
+                <i class="fas fa-ban pulse"></i>
+            </div>
+            
+            <h1>SITE <span class="text-glitch" data-text="BLOCKED">BLOCKED</span></h1>
+            
+            <p>This domain has been restricted during your active focus session.</p>
+            
+            <!-- Blocked site information -->
+            <div id="blocked-site-info" class="blocked-site-info">
+                <h3>BLOCKED DOMAIN</h3>
+                <p id="blocked-domain">Loading site information...</p>
+            </div>
+            
+            <div class="timer-info">
+                <div class="timer-info-header">
+                    <i class="fas fa-clock"></i>
+                    <span>SESSION STATUS</span>
+                </div>
+                <p id="status-message">Work interval in progress</p>
+                <p id="time-remaining">Remaining: <span id="countdown" class="cyber-text">--:--</span></p>
+            </div>
+            
+            <!-- Override Options -->
+            <div class="actions" id="override-options">
+                <button id="back-btn"><i class="fas fa-arrow-left"></i> Return</button>
+                <button id="override-btn"><i class="fas fa-brain"></i> Complete Challenge to Access</button>
+            </div>
+            
+            <!-- Challenge Container (initially hidden) -->
+            <div id="challenge-container" class="challenge-container hidden">
+                <div class="challenge-header">
+                    <i class="fas fa-brain"></i>
+                    <h3>PRODUCTIVITY CHALLENGE</h3>
+                </div>
+                <p>Complete this typing challenge to access the site:</p>
+                
+                <div id="challenge-progress">
+                    <div id="challenge-progress-bar"></div>
+                </div>
+                
+                <div class="typing-challenge-text" id="challenge-text">
+                    Focused work helps build deep skills and creates value that's hard to replicate. By eliminating distractions, you can achieve a state of flow where your best work happens naturally.
+                </div>
+                
+                <textarea id="challenge-input" class="challenge-input" placeholder="Type the above text here..."></textarea>
+                
+                <div class="actions">
+                    <button id="back-from-challenge-btn"><i class="fas fa-arrow-left"></i> Go Back</button>
+                    <button id="complete-challenge-btn" disabled><i class="fas fa-check"></i> Complete Challenge</button>
+                </div>
+            </div>
+            
+            <!-- Override confirmation (initially hidden) -->
+            <div id="override-confirmation" class="hidden">
+                <div class="message success">
+                    <i class="fas fa-check-circle"></i> Access Granted!
+                </div>
+                <div class="override-info">
+                    <div class="time-notice">
+                        <i class="fas fa-hourglass-start"></i>
+                        <h3>You have 5 minutes to access this website</h3>
+                        <p>After that, the site will be blocked again.</p>
+                    </div>
+                    <div class="site-access">
+                        <h4>Click below to access:</h4>
+                        <div id="redirect-target-container">
+                            <!-- The redirect button and link will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    <p class="redirect-help"><strong>Note:</strong> You can return to this page anytime to see your remaining time.</p>
+                </div>
+                
+                <!-- Add a persistent message that will stay visible -->
+                <div class="permanent-instructions">
+                    <p>If you don't get redirected automatically:</p>
+                    <ol>
+                        <li>Click the green button above</li>
+                        <li>Click the text link below the button</li>
+                        <li>Reload this page and try again</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Error message (initially hidden) -->
+            <div id="error-message" class="message error hidden">
+                <i class="fas fa-exclamation-circle"></i> <span id="error-text">Error message here</span>
+            </div>
+            
+            <div class="focus-tip">
+                <div class="focus-tip-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>FOCUS TIP</h3>
+                </div>
+                <p>A 25-minute focused work session can increase your productivity by up to 43%.</p>
+            </div>
+            
+            <div class="cyber-footer">
+                <div class="cyber-line short"></div>
+                <p>FocusFlow v1.0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load external script file instead of inline script -->
+    <script src="blocked.js"></script>
+</body>
+</html> 

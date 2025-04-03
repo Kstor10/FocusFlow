@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow Debug</title>
+    <link rel="stylesheet" href="debug.css">
+</head>
+<body>
+    <h1>FocusFlow Debug Tool</h1>
+    
+    <div class="card">
+        <h2>Extension State</h2>
+        <button id="get-state">Get Current State</button>
+        <pre id="state-output">Click "Get Current State" to see extension state</pre>
+    </div>
+    
+    <div class="card">
+        <h2>Test Token System</h2>
+        <button id="get-tokens">Get Tokens</button>
+        <button id="reset-tokens">Reset Tokens</button>
+        <button id="use-token">Use One Token</button>
+        <pre id="token-output">Click a button to test token functionality</pre>
+    </div>
+    
+    <div class="card">
+        <h2>Test Override</h2>
+        <div>
+            <input type="text" id="override-url" placeholder="URL to override (e.g., facebook.com)">
+            <button id="test-override">Test Override</button>
+            <button id="test-challenge-override">Test Challenge Override</button>
+            <button id="youtube-override" style="display: block; margin-top: 10px;">Visit https://youtube.com</button>
+        </div>
+        <pre id="override-output">Enter a URL and click a button to test override functionality</pre>
+    </div>
+    
+    <div class="card">
+        <h2>Allowed Sites</h2>
+        <button id="get-allowed">Get Allowed Sites</button>
+        <button id="clear-allowed">Clear Allowed Sites</button>
+        <pre id="allowed-output">Click "Get Allowed Sites" to see temporarily allowed sites</pre>
+    </div>
+    
+    <script src="debug.js"></script>
+</body>
+</html> 

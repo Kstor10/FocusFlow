@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task Button Test</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            padding: 50px;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Add Task Button Test</h1>
+        
+        <!-- Task Input Form -->
+        <div class="dq-input-group">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button id="addTaskBtn"><i class="fas fa-plus"></i> Add Task</button>
+        </div>
+        
+        <!-- Task List Container -->
+        <div id="dq-quadrant-do">
+            <h3>Tasks</h3>
+            <ul class="dq-task-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Simple test script
+        console.log('Test script loaded');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            
+            console.log('Task input:', taskInput);
+            console.log('Add task button:', addTaskBtn);
+            
+            if (addTaskBtn) {
+                addTaskBtn.addEventListener('click', function() {
+                    console.log('Button clicked!');
+                    addTask();
+                });
+            }
+            
+            function addTask() {
+                const taskText = taskInput.value.trim();
+                if (taskText === '') {
+                    console.log('Task text is empty');
+                    return;
+                }
+                
+                console.log('Adding task:', taskText);
+                
+                const task = document.createElement('li');
+                task.classList.add('dq-task');
+                task.textContent = taskText;
+                
+                const taskList = document.querySelector('.dq-task-list');
+                if (taskList) {
+                    taskList.appendChild(task);
+                    taskInput.value = '';
+                } else {
+                    console.error('Task list not found');
+                }
+            }
+            
+            // Also add event listener for Enter key
+            taskInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    console.log('Enter key pressed');
+                    addTask();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

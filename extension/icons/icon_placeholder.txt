@@ -1,0 +1,12 @@
+FocusFlow Extension Icons
+
+In a real extension, you would need to create icons in the following sizes:
+- icon16.png (16x16 pixels)
+- icon48.png (48x48 pixels)
+- icon128.png (128x128 pixels)
+
+These icons would be created using a design tool like Adobe Illustrator,
+Photoshop, or Figma, and would represent the FocusFlow brand.
+
+The icons should be clean, simple, and recognizable even at the smallest size.
+A simple timer or hourglass design with the FocusFlow color scheme would be appropriate. 

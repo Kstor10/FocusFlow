@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Chart.js for task analytics - use secure CDN with integrity check -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="cyber-header">
+                <div class="cyber-line"></div>
+                <h1>Focus<span class="text-glitch" data-text="Flow">Flow</span></h1>
+                <div class="cyber-line"></div>
+            </div>
+            <p>// STAY FOCUSED // MAXIMIZE PRODUCTIVITY // ELIMINATE DISTRACTIONS //</p>
+        </header>
+
+        <main>
+            <section class="timer-section">
+                <div class="section-header">
+                    <i class="fas fa-clock"></i>
+                    <span class="section-title">TIMER MODULE</span>
+                </div>
+                <div class="timer-display">
+                    <h2 id="timer-label">Work Time</h2>
+                    <div id="countdown" class="cyber-text">25:00</div>
+                </div>
+                
+                <div class="interval-settings">
+                    <div class="setting">
+                        <label for="work-interval">Work Interval <span class="unit">(min)</span></label>
+                        <input type="number" id="work-interval" min="1" max="120" value="25">
+                    </div>
+                    <div class="setting">
+                        <label for="break-interval">Break Interval <span class="unit">(min)</span></label>
+                        <input type="number" id="break-interval" min="1" max="60" value="5">
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="start-btn"><i class="fas fa-play"></i> Start</button>
+                    <button id="pause-btn"><i class="fas fa-pause"></i> Pause</button>
+                    <button id="reset-btn"><i class="fas fa-sync-alt"></i> Reset</button>
+                </div>
+            </section>
+
+            <!-- == DecisionQuick Module Start == -->
+            <section class="dq-module dq-fullwidth">
+                <div class="section-header">
+                    <i class="fas fa-compass"></i>
+                    <span class="section-title">DECISIONQUICK MATRIX</span>
+                </div>
+                <p>// PRIORITIZE YOUR TASKS // URGENT vs IMPORTANT //</p>
+
+                <div class="dq-add-task">
+                    <input type="text" id="dq-task-input" placeholder="Enter new task...">
+                    <button id="dq-add-task-btn"><i class="fas fa-plus"></i> Add Task</button>
+                </div>
+
+                <!-- Task Analytics Section -->
+                <div class="dq-analytics">
+                    <div class="dq-stats">
+                        <div class="dq-stat-item">
+                            <div class="dq-stat-label">Total Tasks</div>
+                            <div class="dq-stat-value" id="dq-total-tasks">0</div>
+                        </div>
+                        <div class="dq-stat-item">
+                            <div class="dq-stat-label">Completed</div>
+                            <div class="dq-stat-value" id="dq-completed-tasks">0</div>
+                        </div>
+                        <div class="dq-stat-item">
+                            <div class="dq-stat-label">Completion Rate</div>
+                            <div class="dq-stat-value" id="dq-completion-rate">0%</div>
+                        </div>
+                    </div>
+                    <div class="dq-chart-container">
+                        <canvas id="dq-task-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="dq-matrix">
+                    <div class="dq-quadrant dq-do" id="dq-quadrant-do">
+                        <h3><i class="fas fa-rocket"></i> Urgent & Important (Do)</h3>
+                        <ul class="dq-task-list"></ul>
+                    </div>
+                    <div class="dq-quadrant dq-schedule" id="dq-quadrant-schedule">
+                        <h3><i class="fas fa-calendar-alt"></i> Not Urgent & Important (Schedule)</h3>
+                        <ul class="dq-task-list"></ul>
+                    </div>
+                    <div class="dq-quadrant dq-delegate" id="dq-quadrant-delegate">
+                        <h3><i class="fas fa-user-friends"></i> Urgent & Not Important (Delegate)</h3>
+                        <ul class="dq-task-list"></ul>
+                    </div>
+                    <div class="dq-quadrant dq-delete" id="dq-quadrant-delete">
+                        <h3><i class="fas fa-trash-alt"></i> Not Urgent & Not Important (Delete)</h3>
+                        <ul class="dq-task-list"></ul>
+                    </div>
+                </div>
+
+                <!-- Task Productivity Tools -->
+                <div class="dq-tools">
+                    <div class="dq-tools-header">
+                        <h3><i class="fas fa-tools"></i> Productivity Tools</h3>
+                    </div>
+                    <div class="dq-tools-buttons">
+                        <button id="dq-export-btn"><i class="fas fa-file-export"></i> Export Tasks</button>
+                        <button id="dq-clear-completed-btn"><i class="fas fa-broom"></i> Clear Completed</button>
+                        <button id="dq-reset-btn"><i class="fas fa-trash-restore"></i> Reset All</button>
+                    </div>
+                </div>
+            </section>
+            <!-- == DecisionQuick Module End == -->
+
+            <section class="website-blocker">
+                <div class="section-header">
+                    <i class="fas fa-ban"></i>
+                    <span class="section-title">SITE BLOCKER MODULE</span>
+                </div>
+                <p>These domains will be restricted during work intervals</p>
+                
+                <div class="add-website">
+                    <input type="text" id="website-input" placeholder="Enter website URL (e.g., facebook.com)">
+                    <button id="add-website-btn"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                
+                <div class="website-list-container">
+                    <h3><i class="fas fa-shield-alt"></i> Currently Blocked:</h3>
+                    <ul id="blocked-websites"></ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="cyber-line short"></div>
+            <p>FocusFlow v1.0 &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

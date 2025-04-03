@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow</title>
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            width: 300px;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            padding: 15px;
+            margin: 0;
+        }
+        
+        h1 {
+            color: #9d4edd;
+            text-align: center;
+            margin-top: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .status-container {
+            background-color: #121212;
+            border: 1px solid rgba(157, 78, 221, 0.5);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .status-label {
+            font-weight: bold;
+            color: #00e5ff;
+            margin-bottom: 5px;
+        }
+        
+        .status {
+            margin-bottom: 10px;
+        }
+        
+        .blocked-sites {
+            max-height: 150px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(157, 78, 221, 0.2);
+        }
+        
+        button {
+            background-color: #9d4edd;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+        
+        button:hover {
+            background-color: #b14fff;
+        }
+        
+        .error {
+            color: #ff5555;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .debug-info {
+            font-size: 10px;
+            color: #666;
+            margin-top: 15px;
+            border-top: 1px solid rgba(157, 78, 221, 0.2);
+            padding-top: 10px;
+        }
+        
+        /* Token styles */
+        .token-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        
+        .token {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        
+        .token.active {
+            background-color: #9d4edd;
+            box-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
+        }
+        
+        .token.used {
+            background-color: #333;
+            opacity: 0.5;
+        }
+        
+        .token-info {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+            color: #b0b0b0;
+        }
+    </style>
+</head>
+<body>
+    <h1>FocusFlow</h1>
+    
+    <div class="status-container">
+        <div class="status-label">Current Status:</div>
+        <div id="current-status" class="status">Loading...</div>
+        
+        <div class="status-label">Timer:</div>
+        <div id="timer-status" class="status">--:--</div>
+        
+        <div class="status-label">Blocking Status:</div>
+        <div id="blocking-status" class="status">Disabled</div>
+    </div>
+    
+    <div class="status-container">
+        <div class="status-label">Override Tokens:</div>
+        <div class="token-container" id="token-display">
+            <!-- Tokens will be populated here -->
+        </div>
+        <div class="token-info" id="token-info">
+            You have <span id="tokens-remaining">0</span> override tokens remaining today
+        </div>
+    </div>
+    
+    <div class="status-container">
+        <div class="status-label">Blocked Websites:</div>
+        <div id="blocked-sites-count" class="status">No websites blocked</div>
+        
+        <div class="blocked-sites">
+            <ul id="blocked-sites-list">
+                <!-- Sites will be populated here -->
+            </ul>
+        </div>
+    </div>
+    
+    <button id="toggle-blocking">Enable Blocking</button>
+    <button id="open-webapp">Open Web App</button>
+    <button id="open-decisonquick">Open DecisionQuick Matrix</button>
+    <button id="force-update">Force Update Rules</button>
+    
+    <div id="error-message" class="error"></div>
+    
+    <div class="debug-info">
+        <div>Extension ID: <span id="extension-id"></span></div>
+        <div>Last Updated: <span id="last-updated"></span></div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html> 
